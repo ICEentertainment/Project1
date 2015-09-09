@@ -4,7 +4,11 @@
 #include <Windows.h>
 #include <time.h>
 #include <iostream>
+
 using namespace std;
+
+#pragma comment(lib,"d3d9.lib")
+
 
 //program settings
 const string TITLE = "Direct3D_Windowed";
@@ -31,7 +35,7 @@ bool Game_Init(HWND window)
 	//Settting the direct3d presentation params
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	d3dpp.Windowed         = TRUE;
+	d3dpp.Windowed         = FALSE;
 	d3dpp.SwapEffect	   = D3DSWAPEFFECT_DISCARD;
 	d3dpp.BackBufferFormat = D3DFMT_X8R8G8B8;
 	d3dpp.BackBufferCount  = 1;
@@ -110,14 +114,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	wc.lpszMenuName = NULL;
 	wc.lpszClassName = TITLE.c_str();
 	wc.hIconSm = NULL;
-	return RegisterClassEx(&wc);
+	RegisterClassEx(&wc);
 
 	//create a new window
 	//this was in out initinstance function
 	HWND window = CreateWindow(
 		TITLE.c_str(),
 		TITLE.c_str(),
-		WS_OVERLAPPEDWINDOW,
+		WS_EX_TOPMOST|WS_VISIBLE|WS_POPUP,
 		CW_USEDEFAULT, CW_USEDEFAULT,
 		SCREENW, SCREENH,
 		NULL,
