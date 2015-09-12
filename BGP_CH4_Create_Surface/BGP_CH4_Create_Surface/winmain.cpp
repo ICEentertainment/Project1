@@ -92,26 +92,26 @@ void Game_Run(HWND hwnd) {
 	if (!d3ddev) return;
 
 	//clear the back buffer to bright green
-	//d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 0, 0), 1.0f, 0);
-	d3ddev->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &backbuffer);
+	d3ddev->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 0, 0), 1.0f, 0);
+	/*d3ddev->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &backbuffer);*/
 	//start rendering
 	if (d3ddev->BeginScene()) {
 		//fill the screen with a color
-		//int r = rand() % 256;
-		//int g = rand() % 256;
-		//int b = rand() % 256;
-		//d3ddev->ColorFill(surface, NULL, D3DCOLOR_XRGB(r, g, b));
+		int r = rand() % 256;
+		int g = rand() % 256;
+		int b = rand() % 256;
+		d3ddev->ColorFill(surface, NULL, D3DCOLOR_XRGB(r, g, b));
 
 		//copy the surface to the back buffer
-		/*RECT rt;
+		RECT rt;
 		rt.left		= rand() % SCREENW / 2;
 		rt.right	= rt.left + rand() % SCREENW / 2;
 		rt.top		= rand() % SCREENH / 2;
 		rt.bottom	= rt.top + rand() % SCREENH / 2;
-		d3ddev->StretchRect(surface, NULL, backbuffer, &rt,D3DTEXF_NONE);*/
+		d3ddev->StretchRect(surface, NULL, backbuffer, &rt,D3DTEXF_NONE);
 
-		//Bitmap copy to back buffer
-		d3ddev->StretchRect(surface, NULL, backbuffer, NULL, D3DTEXF_NONE);
+		////Bitmap copy to back buffer
+		//d3ddev->StretchRect(surface, NULL, backbuffer, NULL, D3DTEXF_NONE);
 
 		//stop rendering
 		d3ddev->EndScene();
