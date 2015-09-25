@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <time.h>
 #include <dinput.h>
-#include <d3dx9.h>
+#include <d3dx9>
 #include <iostream>
 #include <iomanip>
 using namespace std;
